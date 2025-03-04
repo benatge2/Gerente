@@ -8,8 +8,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="868.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteapp.NavBarController">
-    <ButtonBar layoutY="7.0" prefHeight="70.0" prefWidth="947.0">
+<AnchorPane prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenteapp.NavBarController">
+    <ButtonBar layoutY="7.0" prefHeight="70.0" prefWidth="1000.0">
         <buttons>
          <ImageView fitHeight="64.0" fitWidth="106.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -20,12 +20,7 @@
             <Button mnemonicParsing="false" onAction="#goToAlmazena" prefHeight="28.0" styleClass="navbarBtn" text="Almazena" />
             <Button mnemonicParsing="false" onAction="#goToMahaila" styleClass="navbarBtn" text="Mahaia" />
             <Button mnemonicParsing="false" onAction="#goToTxata" styleClass="navbarBtn" text="Txata" />
-         <Label prefHeight="70.0" prefWidth="400.0" text="GERENTEA" textFill="WHITE" underline="true">
-            <font>
-               <Font size="33.0" />
-            </font>
-         </Label>
-
+            <Button mnemonicParsing="false" onAction="#XMLsortu" styleClass="navbarBtn" text="Eguraldia XML" />
         </buttons>
     </ButtonBar>
 </AnchorPane>

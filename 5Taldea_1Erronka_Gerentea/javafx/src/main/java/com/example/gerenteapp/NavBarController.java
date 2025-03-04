@@ -103,4 +103,8 @@ public class NavBarController extends BaseController {
         }
 
 
+        public void XMLsortu(ActionEvent actionEvent) {
+                EguraldiaController eguraldiaController = new EguraldiaController();
+                eguraldiaController.descargarYProcesarXml();
+        }
 }

@@ -1,9 +1,11 @@
 package com.example.gerenteapp;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 import java.io.IOException;
@@ -14,10 +16,12 @@ public class LoginController extends BaseController {
         private TextField emai;
         @FXML
         private TextField pasa;
-
+        @FXML
+        private Button descargarXmlButton;
 
         @FXML
         protected void loginBotoia() throws IOException {
+                System.out.println("Se ha entrado al login button");
                 String email = emai.getText();
                 String pasahitza = pasa.getText();
                 Langilea langileaLogin = LoginKudeatzailea.erabiltzaileaKomprobatu(email, pasahitza);
@@ -52,11 +56,6 @@ public class LoginController extends BaseController {
                 }
         }
 
-
-
-
-
-
         private void mezuaPantailaratu(String izena, String mezuLuzea, Alert.AlertType mota) {
                 Alert alerta = new Alert(mota);
                 alerta.setTitle(izena);
@@ -65,5 +64,8 @@ public class LoginController extends BaseController {
                 alerta.showAndWait(); // mezua pantailaratu eta itxi
         }
 
-
+        public void XMLsortu(ActionEvent actionEvent) {
+                EguraldiaController eguraldiaController = new EguraldiaController();
+                eguraldiaController.descargarYProcesarXml();
+        }
 }

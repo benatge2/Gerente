@@ -34,5 +34,13 @@
                 <String fx:value="buttonCss" />
             </styleClass>
         </Button>
-
+    <Button alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" onAction="#XMLsortu" prefHeight="28.0" prefWidth="200.0" text="Eguraldi XML-a sortu" textFill="WHITE">
+        <font>
+            <Font size="17.0" />
+        </font>
+        <styleClass>
+            <String fx:value="button-rounded" />
+            <String fx:value="buttonCss" />
+        </styleClass>
+    </Button>
 </VBox>
