@@ -21,6 +21,7 @@
             <Button mnemonicParsing="false" onAction="#goToMahaila" styleClass="navbarBtn" text="Mahaia" />
             <Button mnemonicParsing="false" onAction="#goToTxata" styleClass="navbarBtn" text="Txata" />
             <Button mnemonicParsing="false" onAction="#XMLsortu" styleClass="navbarBtn" text="Eguraldia XML" />
+            <Button mnemonicParsing="false" onAction="#Informesortu" styleClass="navbarBtn" text="Informea Sortu" />
         </buttons>
     </ButtonBar>
 </AnchorPane>

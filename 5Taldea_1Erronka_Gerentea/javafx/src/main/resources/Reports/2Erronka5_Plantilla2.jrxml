@@ -1,0 +1,327 @@
+<!-- Created with Jaspersoft Studio version 7.0.1.final using JasperReports Library version 7.0.1-573496633c2b4074e32f433154b543003f7d2498  -->
+<jasperReport name="2Erronka5_Plantilla" language="java" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="687"/>
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50.0">
+		<textElement>
+			<font isBold="false"/>
+		</textElement>
+	</style>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18.0">
+		<textElement>
+			<font isBold="false"/>
+		</textElement>
+	</style>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14.0">
+		<textElement>
+			<font isBold="true"/>
+		</textElement>
+	</style>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle mode="Opaque" backcolor="#F0EFEF">
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+		</conditionalStyle>
+	</style>
+	<dataset name="PieChartDataset" uuid="39581794-7f4c-48d6-8f6a-b421776f515c"/>
+	<dataset name="Pie_chart1" uuid="343bf15f-9781-4cdc-bf2a-f1b17347a3a9">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+		<query language="SQL"><![CDATA[SELECT mota,sum(stock) FROM almazena group by mota]]></query>
+		<field name="mota" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="mota"/>
+			<property name="com.jaspersoft.studio.field.label" value="mota"/>
+			<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+		</field>
+		<field name="sum(stock)" class="java.math.BigDecimal">
+			<property name="com.jaspersoft.studio.field.name" value="sum(stock)"/>
+			<property name="com.jaspersoft.studio.field.label" value="sum(stock)"/>
+		</field>
+		<group name="mota">
+			<expression><![CDATA[$F{mota}]]></expression>
+		</group>
+		<group name="sum(stock)">
+			<expression><![CDATA[$F{sum(stock)}]]></expression>
+		</group>
+	</dataset>
+	<dataset name="PieChart_2" uuid="c11461a0-928d-473d-84c3-f11bc7a31f75">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+		<query language="SQL"><![CDATA[SELECT 'Por debajo del mínimo' AS categoria, COUNT(*) AS cantidad
+FROM almazena
+WHERE stock < min
+
+UNION ALL
+
+SELECT 'Entre mínimo y máximo' AS categoria, COUNT(*) AS cantidad
+FROM almazena
+WHERE stock BETWEEN min AND max
+
+UNION ALL
+
+SELECT 'Por encima del máximo' AS categoria, COUNT(*) AS cantidad
+FROM almazena
+WHERE stock >= max
+]]></query>
+		<field name="categoria" class="java.lang.String">
+			<property name="com.jaspersoft.studio.field.name" value="categoria"/>
+			<property name="com.jaspersoft.studio.field.label" value="categoria"/>
+		</field>
+		<field name="cantidad" class="java.lang.Long">
+			<property name="com.jaspersoft.studio.field.name" value="cantidad"/>
+			<property name="com.jaspersoft.studio.field.label" value="cantidad"/>
+		</field>
+		<group name="categoria">
+			<expression><![CDATA[$F{categoria}]]></expression>
+		</group>
+		<group name="cantidad">
+			<expression><![CDATA[$F{cantidad}]]></expression>
+		</group>
+	</dataset>
+	<query language="SQL"><![CDATA[Select * from almazena]]></query>
+	<field name="id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id"/>
+		<property name="com.jaspersoft.studio.field.label" value="id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="izena" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="izena"/>
+		<property name="com.jaspersoft.studio.field.label" value="izena"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="mota" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="mota"/>
+		<property name="com.jaspersoft.studio.field.label" value="mota"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="ezaugarria" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="ezaugarria"/>
+		<property name="com.jaspersoft.studio.field.label" value="ezaugarria"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="stock" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="stock"/>
+		<property name="com.jaspersoft.studio.field.label" value="stock"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="unitatea" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="unitatea"/>
+		<property name="com.jaspersoft.studio.field.label" value="unitatea"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="min" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="min"/>
+		<property name="com.jaspersoft.studio.field.label" value="min"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="max" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="max"/>
+		<property name="com.jaspersoft.studio.field.label" value="max"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="created_at" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="created_by" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="created_by"/>
+		<property name="com.jaspersoft.studio.field.label" value="created_by"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="updated_at" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="updated_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="update_by" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="update_by"/>
+		<property name="com.jaspersoft.studio.field.label" value="update_by"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="deleted_at" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="deleted_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="deleted_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<field name="deleted_by" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="deleted_by"/>
+		<property name="com.jaspersoft.studio.field.label" value="deleted_by"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="almazena"/>
+	</field>
+	<group name="Group1">
+		<expression><![CDATA[$F{id}]]></expression>
+		<groupHeader>
+			<band height="31">
+				<element kind="frame" uuid="619d89ef-7c2f-4167-a52a-be5e7af8783c" mode="Opaque" x="229" y="7" width="326" height="24" forecolor="#B89F7D" backcolor="#70A9C6">
+					<element kind="textField" uuid="2187fac7-7130-4a2e-aa99-ae4eab58336f" x="2" y="1" width="263" height="23" forecolor="#FFFFFF" fontName="Arial" textAdjust="StretchHeight" blankWhenNull="true" printRepeatedValues="false" style="SubTitle">
+						<textElement>
+							<font isBold="false"/>
+						</textElement>
+						<expression><![CDATA[$F{izena}]]></expression>
+					</element>
+				</element>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="6"/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<expression><![CDATA[$F{izena}]]></expression>
+		<groupHeader>
+			<band height="24">
+				<element kind="textField" uuid="3a616ee3-2799-4183-84b9-c4ef0a67c703" positionType="Float" x="231" y="4" width="299" height="20" forecolor="#000000" fontName="Arial" fontSize="16.0" blankWhenNull="true">
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<expression><![CDATA[$F{stock} + " " + $F{unitatea}
+]]></expression>
+				</element>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="mota">
+		<expression><![CDATA[$F{mota}]]></expression>
+	</group>
+	<group name="ezaugarria">
+		<expression><![CDATA[$F{ezaugarria}]]></expression>
+	</group>
+	<group name="stock">
+		<expression><![CDATA[$F{stock}]]></expression>
+	</group>
+	<group name="unitatea">
+		<expression><![CDATA[$F{unitatea}]]></expression>
+	</group>
+	<group name="min">
+		<expression><![CDATA[$F{min}]]></expression>
+	</group>
+	<group name="max">
+		<expression><![CDATA[$F{max}]]></expression>
+	</group>
+	<group name="created_at">
+		<expression><![CDATA[$F{created_at}]]></expression>
+	</group>
+	<group name="created_by">
+		<expression><![CDATA[$F{created_by}]]></expression>
+	</group>
+	<group name="updated_at">
+		<expression><![CDATA[$F{updated_at}]]></expression>
+	</group>
+	<group name="update_by">
+		<expression><![CDATA[$F{update_by}]]></expression>
+	</group>
+	<group name="deleted_at">
+		<expression><![CDATA[$F{deleted_at}]]></expression>
+	</group>
+	<group name="deleted_by">
+		<expression><![CDATA[$F{deleted_by}]]></expression>
+	</group>
+	<background height="802" splitType="Stretch">
+		<element kind="image" uuid="847f1a8b-e48a-47b2-85db-1279aa8de550" x="-20" y="65" width="229" height="250">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} == 1]]></printWhenExpression>
+			<expression><![CDATA["flower1.png"]]></expression>
+		</element>
+		<element kind="image" uuid="fdc83025-e841-44e3-a893-483c783bcb02" x="-20" y="-20" width="229" height="250">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER} > 1]]></printWhenExpression>
+			<expression><![CDATA["flower1.png"]]></expression>
+		</element>
+		<element kind="chart" chartType="pie3D" uuid="6d870b29-0817-4a8a-b0bd-ff84ec4b1676" x="-20" y="488" width="247" height="131" showLegend="false" evaluationTime="Report">
+			<dataset kind="pie">
+				<datasetRun uuid="dfd44dc9-549c-4937-a718-c2706d27e8ee" subDataset="Pie_chart1"/>
+				<series>
+					<keyExpression><![CDATA[/* Replace with your key expression here */
+$V{REPORT_COUNT}]]></keyExpression>
+					<valueExpression><![CDATA[$F{sum(stock)}]]></valueExpression>
+					<labelExpression><![CDATA[$F{mota}]]></labelExpression>
+				</series>
+			</dataset>
+			<plot backgroundAlpha="0.5" foregroundAlpha="0.8">
+				<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+				<seriesColor order="0" color="#3399FF"/>
+				<seriesColor order="1" color="#00CCFF"/>
+				<seriesColor order="2" color="#0066CC"/>
+				<seriesColor order="3" color="#6699FF"/>
+				<seriesColor order="4" color="#004A94"/>
+				<seriesColor order="5" color="#00356A"/>
+			</plot>
+		</element>
+		<element kind="chart" chartType="pie3D" uuid="5d3cba38-22f3-489d-9842-467a9a39c5d8" x="-20" y="619" width="247" height="131" showLegend="false" evaluationTime="Report">
+			<dataset kind="pie">
+				<datasetRun uuid="e8da5b1d-4599-49df-aa89-0bfd1d98f6d9" subDataset="PieChart_2"/>
+				<series>
+					<keyExpression><![CDATA[/* Replace with your key expression here */
+$V{REPORT_COUNT}]]></keyExpression>
+					<valueExpression><![CDATA[$F{cantidad}]]></valueExpression>
+					<labelExpression><![CDATA[$F{categoria}]]></labelExpression>
+				</series>
+			</dataset>
+			<plot backgroundAlpha="0.5" foregroundAlpha="0.8">
+				<itemLabel color="#000000" backgroundColor="#FFFFFF"/>
+				<seriesColor order="0" color="#3399FF"/>
+				<seriesColor order="1" color="#00CCFF"/>
+				<seriesColor order="2" color="#0066CC"/>
+				<seriesColor order="3" color="#6699FF"/>
+				<seriesColor order="4" color="#004A94"/>
+				<seriesColor order="5" color="#00356A"/>
+			</plot>
+		</element>
+	</background>
+	<title height="94" splitType="Stretch">
+		<element kind="staticText" uuid="7a8ee983-690c-4f4d-9330-42613bd3d628" x="336" y="65" width="217" height="29" fontSize="22.0" hTextAlign="Right" style="SubTitle">
+			<textElement>
+				<font isBold="false"/>
+			</textElement>
+			<text><![CDATA[Produktu motak]]></text>
+		</element>
+		<element kind="frame" uuid="29f958b3-9df5-4ee0-905e-9fd33029926f" mode="Opaque" x="-20" y="0" width="597" height="65" forecolor="#006699" backcolor="#006699">
+			<element kind="staticText" uuid="cf1fabd8-9376-4a95-a65d-c762a7404011" x="231" y="0" width="346" height="65" fontSize="54.0" hTextAlign="Right" style="Title">
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Inbentario Stock]]></text>
+			</element>
+		</element>
+	</title>
+	<pageHeader splitType="Stretch"/>
+	<columnHeader height="27" splitType="Stretch">
+		<element kind="frame" uuid="793d06e1-d7cc-4d62-ad99-d289a8ce0026" x="227" y="0" width="328" height="20"/>
+	</columnHeader>
+	<detail>
+		<band height="23" splitType="Stretch">
+			<element kind="line" uuid="1f2efa15-468e-4870-8f24-1cb1eda2034d" positionType="FixRelativeToBottom" x="227" y="22" width="326" height="1"/>
+			<element kind="frame" uuid="dec77cf2-1014-4b3e-9934-7f0c65a83bce" x="227" y="0" width="328" height="20"/>
+		</band>
+	</detail>
+	<columnFooter height="7" splitType="Stretch">
+		<element kind="line" uuid="0a05d19c-77ff-48d5-91d6-460d221419e5" positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1">
+			<pen lineWidth="0.5" lineColor="#999999"/>
+		</element>
+	</columnFooter>
+	<pageFooter height="13" splitType="Stretch">
+		<element kind="frame" uuid="21b8ec89-3912-4f38-b1d2-846c348d496b" mode="Opaque" x="2" y="0" width="555" height="13" forecolor="#D0B48E" backcolor="#006699">
+			<element kind="textField" uuid="2f1f4647-386f-4ee9-b3b1-779c70fd7960" x="513" y="0" width="40" height="13" forecolor="#FFFFFF" fontSize="10.0" evaluationTime="Report" vTextAlign="Middle" style="Column header">
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<expression><![CDATA[" " + $V{PAGE_NUMBER}]]></expression>
+			</element>
+			<element kind="textField" uuid="c50a7647-9d9b-4145-89d7-15adb353fac4" x="433" y="0" width="80" height="13" forecolor="#FFFFFF" fontSize="10.0" hTextAlign="Right" vTextAlign="Middle" style="Column header">
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<expression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></expression>
+			</element>
+			<element kind="textField" uuid="2a75ce15-0152-4154-9a45-a23c6a9d3107" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" fontSize="10.0" pattern="EEEEE dd MMMMM yyyy" vTextAlign="Middle" style="Column header">
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<expression><![CDATA[new java.util.Date()]]></expression>
+			</element>
+		</element>
+	</pageFooter>
+	<summary splitType="Stretch"/>
+</jasperReport>

@@ -107,4 +107,11 @@ public class NavBarController extends BaseController {
                 EguraldiaController eguraldiaController = new EguraldiaController();
                 eguraldiaController.descargarYProcesarXml();
         }
+
+        public void Informesortu(ActionEvent actionEvent){
+                InformeController informe = new InformeController();
+                informe.generarInforme();
+
+        }
+
 }
